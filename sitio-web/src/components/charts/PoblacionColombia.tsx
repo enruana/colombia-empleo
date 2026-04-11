@@ -54,7 +54,7 @@ export default function PoblacionColombia() {
   const formatM = (n: number) => `${(n / 1_000_000).toFixed(1)}M`;
   const formatFull = (n: number) => n.toLocaleString("es-CO");
 
-  // Encontrar el pico (ano con poblacion maxima)
+  // Encontrar el pico (año con poblacion maxima)
   const peakRow = data.reduce((max, r) => (r.total > max.total ? r : max), data[0]);
 
   // Datos clave para mostrar

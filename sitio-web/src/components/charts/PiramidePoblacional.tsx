@@ -111,7 +111,7 @@ export default function PiramidePoblacional() {
           </h3>
           <p className="mt-1 text-sm text-neutral-600">
             Observa como Colombia pasa de una piramide joven (2020) a una envejecida (2050).
-            Haz click para cambiar de ano.
+            Haz click para cambiar de año.
           </p>
         </div>
 
@@ -187,7 +187,7 @@ export default function PiramidePoblacional() {
               boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
               fontSize: "13px",
             }}
-            labelFormatter={(l) => `Edad: ${l} anos`}
+            labelFormatter={(l) => `Edad: ${l} años`}
             formatter={(value: number, name: string) => {
               const abs = Math.abs(value);
               const label = name === "hombres" ? "Hombres" : "Mujeres";
