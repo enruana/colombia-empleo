@@ -43,50 +43,52 @@ export default function GEIHvsPILA() {
       .then((r) => r.text())
       .then((csv) => {
         const lines = csv.trim().split("\n");
+        // Cada trimestre se etiqueta con el ULTIMO mes del trimestre movil.
+        // Por ejemplo "2026 Nov 25 - ene 26" → fecha "2026-01"
+        const endMonthMap: Record<string, [string, string]> = {
+          "Ene - mar": ["", "03"],
+          "Feb - abr": ["", "04"],
+          "Mar - may": ["", "05"],
+          "Abr - jun": ["", "06"],
+          "May - jul": ["", "07"],
+          "Jun - ago": ["", "08"],
+          "Jul - sep": ["", "09"],
+          "Ago - oct": ["", "10"],
+          "Sep - nov": ["", "11"],
+          "Oct - dic": ["", "12"],
+        };
         const rows = lines.slice(1).map((line) => {
           const v = line.split(",");
           const trim = v[0];
           const formal = Number(v[2]);
-          const yearMatch = trim.match(/(\d{4})/);
-          const monthMap: Record<string, string> = {
-            "Ene - mar": "02",
-            "Feb - abr": "03",
-            "Mar - may": "04",
-            "Abr - jun": "05",
-            "May - jul": "06",
-            "Jun - ago": "07",
-            "Jul - sep": "08",
-            "Ago - oct": "09",
-            "Sep - nov": "10",
-            "Oct - dic": "11",
-            "Nov 25 - ene 26": "12",
-            "Nov - ene": "12",
-            "Dic - feb": "01",
-          };
-          let year = yearMatch ? yearMatch[1] : "2025";
-          let month = "06";
-          // Handle cross-year trimesters
-          if (trim.includes("Nov 25 - ene 26") || trim.includes("nov 25") || trim.includes("ene 26")) {
-            year = "2025";
-            month = "12";
-          } else if (trim.includes("Dic 25 - feb 26") || trim.includes("dic 25") || trim.includes("feb 26")) {
-            year = "2026";
-            month = "01";
+
+          let fecha = "";
+          // Trimestres cruzando ano (formato "2026 Nov 25 - ene 26")
+          if (trim.includes("Nov 25 - ene 26")) {
+            fecha = "2026-01";
+          } else if (trim.includes("Dic 25 - feb 26")) {
+            fecha = "2026-02";
+          } else if (trim.includes("Ene 26 - mar 26") || trim.includes("Ene - mar 26")) {
+            fecha = "2026-03";
           } else {
-            for (const [k, val] of Object.entries(monthMap)) {
+            // Trimestres normales: extraer ano + ultimo mes
+            const yearMatch = trim.match(/(\d{4})/);
+            const year = yearMatch ? yearMatch[1] : "2025";
+            for (const [k, [, endMonth]] of Object.entries(endMonthMap)) {
               if (trim.includes(k)) {
-                month = val;
+                fecha = `${year}-${endMonth}`;
                 break;
               }
             }
           }
           return {
-            fecha: `${year}-${month}`,
+            fecha,
             formalesGEIH: Math.round(formal),
           };
         });
-        // Filter from 2023 onwards and dedupe
-        const filtered = rows.filter((r) => r.fecha >= "2023-01" && !isNaN(r.formalesGEIH));
+        const filtered = rows.filter(
+          (r) => r.fecha && r.fecha >= "2023-01" && !isNaN(r.formalesGEIH)
+        );
         setGeihData(filtered);
         setLoading(false);
       });
@@ -216,12 +218,19 @@ export default function GEIHvsPILA() {
       </ResponsiveContainer>
 
       <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50/50 p-3 text-xs text-amber-900">
-        <strong>Nota sobre la cifra de marzo 2026:</strong> La ANDI citó una caída a ~11.3 millones
-        en marzo 2026, pero ese dato se refiere <em>solo a trabajadores privados formales</em>
+        <strong>Por que la grafica para en enero 2026:</strong> Los datos publicos del DANE
+        sobre formales/informales se publican <em>trimestre movil</em>, con ~45 dias de rezago.
+        El ultimo trimestre disponible al 11 de abril 2026 es <strong>noviembre 2025 - enero 2026</strong>.
+        Para PILA, la UGPP solo ha publicado oficialmente datos hasta diciembre 2025.
+        La controversia del 31 de marzo 2026 (linea roja) ocurrio antes de que se publicara
+        el siguiente boletin. Cuando salgan los datos de febrero y marzo 2026,
+        actualizamos.
+        <br /><br />
+        <strong>Sobre la cifra ANDI de "11.3 millones":</strong> Mac Master citó esa cifra
+        para marzo 2026, pero se refiere <em>solo a trabajadores privados formales</em>
         (excluye sector público e independientes). No es directamente comparable con los
-        ~13M de cotizantes totales que muestra la serie PILA completa. Es parte de por qué
-        la controversia es tan enredada: los dos lados usan cifras distintas del mismo
-        universo.
+        ~13M de cotizantes totales que muestra la serie PILA. Esa diferencia conceptual es
+        parte central del enredo: cada lado usa una rebanada distinta del mismo universo.
       </div>
     </ChartFrame>
   );
