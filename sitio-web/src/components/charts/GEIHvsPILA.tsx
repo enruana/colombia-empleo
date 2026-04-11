@@ -123,7 +123,7 @@ export default function GEIHvsPILA() {
     <ChartFrame
       number="Grafica 2 · La controversia"
       title="Dos fuentes oficiales, dos numeros diferentes"
-      description="La GEIH del DANE mide 'formales' preguntando a las personas. PILA mide cotizantes reales al sistema. Ambas son oficiales. El pico historico de PILA fue en septiembre 2024 (13.82M). La controversia estallo el 31 de marzo de 2026."
+      description="GEIH (DANE, autorreporte) marca ~10.8M formales. PILA (UGPP, cotizaciones reales) marca ~13.3M cotizantes. La brecha de ~2.5M no es un error: las dos fuentes miden cosas distintas. El pico PILA fue en septiembre 2024 (13.82M). La controversia DANE-ANDI estallo el 31 de marzo de 2026."
       source="DANE GEIH (extension feb 2026) + UGPP PILA (datos oficiales verificados)"
       legend={
         <>
@@ -151,7 +151,7 @@ export default function GEIHvsPILA() {
             axisLine={false}
             fontSize={11}
             tickFormatter={(v) => formatNumber(v * 1000)}
-            domain={[10000, 15000]}
+            domain={[8500, 14500]}
           />
           <Tooltip
             contentStyle={tooltipStyle}
