@@ -62,20 +62,43 @@ import TasasHistorico from "../../components/charts/TasasHistorico.tsx";
   según la definición oficial.
 </p>
 
-<Callout type="info" title="Definición oficial del DANE">
-  Una persona está <strong>ocupada</strong> si durante la semana de referencia
-  cumple alguna de estas condiciones:
-  <ul class="mt-2 list-disc list-inside space-y-1">
-    <li>Trabajó al menos <strong>1 hora</strong> remunerada</li>
-    <li>Trabajó al menos 1 hora sin pago en un negocio familiar</li>
+<Callout type="info" title="Definición oficial del DANE (cita literal)">
+  <p class="italic">
+    "Población ocupada (OC): Comprende a las personas de 15 años y más, que
+    durante el período de referencia trabajaron al menos una hora remunerada en
+    la semana de referencia; no trabajaron la semana de referencia pero tenían
+    un trabajo; o trabajaron en la semana de referencia por lo menos una hora
+    sin pago en empresas o negocios de familiares."
+  </p>
+  <p class="mt-2 text-xs">
+    — Metodología GEIH versión 11, página 6, DANE (junio 2023). Código
+    <code>DSO-GEIH-MET-001</code>.
+  </p>
+  <p class="mt-3">
+    O sea, las tres condiciones son:
+  </p>
+  <ul class="mt-1 list-disc list-inside space-y-1">
+    <li>Trabajó al menos <strong>1 hora remunerada</strong> en la semana de referencia</li>
     <li>No trabajó en la semana, pero tenía un trabajo del que estaba ausente
       temporalmente (vacaciones, licencia, enfermedad)</li>
+    <li>Trabajó al menos <strong>1 hora sin pago</strong> en un negocio familiar</li>
   </ul>
   <p class="mt-2">
     Este criterio sigue los estándares internacionales de la
-    <strong>Organización Internacional del Trabajo (OIT)</strong>, lo que permite
-    comparar las cifras de Colombia con las de otros países.
+    <strong>Organización Internacional del Trabajo (OIT)</strong>, específicamente
+    las resoluciones de las Conferencias Internacionales de Estadísticos del
+    Trabajo (CIET) 17ª (2003), 19ª (2013) y 20ª (2018). Por eso las cifras de
+    Colombia son comparables con las de otros países.
   </p>
+</Callout>
+
+<Callout type="warning" title="Un cambio importante en 2023">
+  Hasta 2023, el DANE consideraba como Población en Edad de Trabajar (PET) a las
+  personas de <strong>12 años en zonas urbanas y 10 en rurales</strong>. En la
+  versión 11 de la metodología (junio 2023), siguiendo el Convenio 138 de la OIT
+  sobre edad mínima de empleo, esto se actualizó a <strong>15 años en adelante</strong>
+  para todo el país. Por eso los documentos del DANE anteriores a 2023 mencionan
+  edades distintas: la actual es 15+.
 </Callout>
 
 <h2>¿De dónde salen estos datos? La GEIH</h2>
@@ -112,22 +135,23 @@ import TasasHistorico from "../../components/charts/TasasHistorico.tsx";
   </p>
   <ul class="mt-1 list-disc list-inside space-y-1">
     <li>
-      <a href="https://www.dane.gov.co/files/investigaciones/fichas/glosario_GEIH13.pdf" target="_blank" rel="noopener">
-        Glosario GEIH (PDF)
+      <a href="https://www.dane.gov.co/files/operaciones/GEIH/DSO-GEIH-MET-001-V11.pdf" target="_blank" rel="noopener">
+        Metodología GEIH V11 (PDF)
       </a>
-      &mdash; términos y definiciones del mercado laboral
+      &mdash; documento técnico vigente, junio 2023. Tiene la definición
+      actualizada de ocupado, desocupado y PET
     </li>
     <li>
       <a href="https://www.dane.gov.co/files/investigaciones/fichas/empleo/ficha_metodologica_GEIH-01_V10.pdf" target="_blank" rel="noopener">
-        Ficha metodológica (PDF)
+        Ficha metodológica V10 (PDF)
       </a>
-      &mdash; cómo se diseña y aplica la encuesta
+      &mdash; resumen técnico anterior, 2015 (algunas definiciones desactualizadas)
     </li>
     <li>
-      <a href="https://www.dane.gov.co/files/investigaciones/fichas/empleo/metodologia_GEIH-01_V9.pdf" target="_blank" rel="noopener">
-        Metodología completa (PDF)
+      <a href="https://www.dane.gov.co/files/investigaciones/fichas/glosario_GEIH13.pdf" target="_blank" rel="noopener">
+        Glosario GEIH (PDF)
       </a>
-      &mdash; documento técnico extendido
+      &mdash; glosario de términos, 2012 (la edad de la PET ya cambió)
     </li>
   </ul>
 </Callout>
