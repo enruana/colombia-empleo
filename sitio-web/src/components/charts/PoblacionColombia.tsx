@@ -131,7 +131,7 @@ export default function PoblacionColombia() {
             axisLine={false}
             fontSize={12}
             tickFormatter={formatM}
-            domain={[40_000_000, 60_000_000]}
+            domain={[0, 60_000_000]}
           />
           <Tooltip
             contentStyle={{
@@ -226,15 +226,6 @@ export default function PoblacionColombia() {
         <div className="ml-auto text-neutral-500">
           Fuente: DANE — Proyecciones de poblacion nacional 2018-2070
         </div>
-      </div>
-
-      <div className="mt-4 rounded-lg border border-neutral-200 bg-neutral-50/60 p-3 text-xs text-neutral-600">
-        <strong className="text-neutral-900">Nota tecnica sobre la escala:</strong> El
-        eje Y empieza en 40M (no en 0) para que se vea claramente la trayectoria de
-        crecimiento y posterior caida. Si empezara en 0, la variacion entre 48M y 56M
-        se veria como una linea casi plana. El DANE solo publica el desglose
-        urbano/rural hasta 2050; la proyeccion del total continua hasta 2070 mostrando
-        la fase de declive demografico esperada.
       </div>
     </div>
   );
