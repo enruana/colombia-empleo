@@ -2,7 +2,8 @@
 
 Este documento lista TODOS los archivos descargados en la Fase 2, su origen, contenido y como citarlos.
 
-Fecha de descarga: **10 de abril de 2026**
+Fecha de descarga inicial: **10 de abril de 2026**
+Ultima actualizacion de datos: **10 de abril de 2026** (actualizacion con anexos DANE feb 2026 y GEIHEISS nov 2025-ene 2026)
 
 ---
 
@@ -150,6 +151,7 @@ Todos los archivos CSV estan en `processed/` y usan codificacion UTF-8 con separ
 
 | Archivo | Contenido | URL |
 |---------|-----------|-----|
+| `anexo-GEIH-feb2026.xlsx` | Serie mensual empleo/desempleo hasta **febrero 2026** (ultimo dato) | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIH-feb2026.xlsx |
 | `anexo-GEIH-ene2026.xlsx` | Serie mensual empleo/desempleo hasta enero 2026 | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIH-ene2026.xlsx |
 | `anexo-GEIH-dic2025.xlsx` | Serie mensual hasta diciembre 2025 | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIH-dic2025.xlsx |
 | `anexo-GEIH-nov2025.xlsx` | Hasta noviembre 2025 | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIH-nov2025.xlsx |
@@ -164,6 +166,8 @@ Todos los archivos CSV estan en `processed/` y usan codificacion UTF-8 con separ
 | `anexo-GEIH-feb2025.xlsx` | Hasta febrero 2025 | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIH-feb2025.xlsx |
 | `anexo-GEIH-ene2025.xlsx` | Hasta enero 2025 | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIH-ene2025.xlsx |
 | `anexo-GEIH-dic2024.xlsx` | Hasta diciembre 2024 | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIH-dic2024.xlsx |
+| `anexo-GEIHEISS-nov2025-ene2026.xlsx` | Informalidad trimestre **nov 2025 - ene 2026** (ultimo disponible) | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIHEISS-nov2025-ene2026.xlsx |
+| `anexo-GEIHEISS-oct-dic2025.xlsx` | Informalidad trimestre oct-dic 2025 | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIHEISS-oct-dic2025.xlsx |
 | `anexo-GEIHEISS-sep-nov2025.xlsx` | Informalidad trimestre sep-nov 2025 | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIHEISS-sep-nov2025.xlsx |
 | `anexo-GEIHEISS-ago-oct2025.xlsx` | Informalidad ago-oct 2025 | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIHEISS-ago-oct2025.xlsx |
 | `anexo-GEIHEISS-jul-sep2025.xlsx` | Informalidad jul-sep 2025 | https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIHEISS-jul-sep2025.xlsx |
@@ -205,6 +209,13 @@ y `https://www.dane.gov.co/files/operaciones/GEIH/bol-GEIHEISS-{trimestre}.pdf`
 | `ugpp-cotizaciones-jun2021.pdf` | Boletin mensual junio 2021 | https://www.ugpp.gov.co/sites/default/files/Nuestra-entidad/Cotizaciones_Sistema_Proteccion_Social_Junio_2021_0.pdf |
 | `ugpp-presentacion-nov2023.html` | Informe noviembre 2023 | https://www.ugpp.gov.co/sites/default/files/Parafiscales/Presentacion_NOV_2023.html |
 | `ugpp-presentacion-dic2023.html` | Informe diciembre 2023 | https://www.ugpp.gov.co/sites/default/files/Parafiscales/Presentacion_DIC_2023.html |
+| `ugpp-informe-gestion-2025.pdf` | Informe de Gestion 2025 UGPP (publicado enero 2026) | https://www.ugpp.gov.co/wp-content/uploads/2026/01/Informe-de-Gestion-2025_Consolidado.pdf |
+
+### Banco de la Republica (`raw/banrep/`)
+
+| Archivo | Contenido | URL |
+|---------|-----------|-----|
+| `bie-6-abr-2026.pdf` | Boletin de Indicadores Economicos del 6 de abril 2026. Confirma TD feb 2026 = 9.23%, inflacion 5.29%, PIB 2025 +2.6% | https://www.banrep.gov.co/economia/pli/bie.pdf |
 
 ---
 

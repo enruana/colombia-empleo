@@ -30,14 +30,14 @@ export default function ComposicionPoblacion() {
       const pop2026 = popLines.find((l) => l.startsWith("2026,"));
       const total = pop2026 ? Number(pop2026.split(",")[1]) : 53399171;
 
-      // Enero 2026 de GEIH
+      // Ultimo mes de GEIH disponible (feb 2026)
       const geihLines = geihCsv.trim().split("\n");
-      const ene2026 = geihLines[geihLines.length - 1].split(",");
+      const lastMonth = geihLines[geihLines.length - 1].split(",");
       // Columnas: fecha, %PET, TGP, TO, TD, TS, Pob total, PET, FT, Ocupados, Desocupados, PEI, Subocupados
-      const pet = Number(ene2026[7]) * 1000;
-      const ocupados = Number(ene2026[9]) * 1000;
-      const desocupados = Number(ene2026[10]) * 1000;
-      const pei = Number(ene2026[11]) * 1000;
+      const pet = Number(lastMonth[7]) * 1000;
+      const ocupados = Number(lastMonth[9]) * 1000;
+      const desocupados = Number(lastMonth[10]) * 1000;
+      const pei = Number(lastMonth[11]) * 1000;
       const menores15 = total - pet;
 
       setData({ total, menores15, pet, ocupados, desocupados, pei });
@@ -96,8 +96,8 @@ export default function ComposicionPoblacion() {
     <ChartFrame
       number="Grafica 1 · Interactiva"
       title={`Como se divide la poblacion de Colombia (${formatFull(data.total / 1_000_000).substring(0, 4)}M)`}
-      description="Todas las personas se clasifican en una sola categoria. Enero 2026."
-      source="DANE — GEIH Enero 2026 + Proyecciones de poblacion"
+      description="Todas las personas se clasifican en una sola categoria. Datos a febrero 2026."
+      source="DANE — GEIH Febrero 2026 + Proyecciones de poblacion"
     >
       {/* Nivel 1: Total → Menores + PET */}
       <div className="mb-8">
